@@ -1,0 +1,7 @@
+kubectl config get-contexts - used to list clusters
+kubectl config use-context $CONTEXT -- used to switch to a particular cluster
+minikube start --nodes 3 -- used to start nodes on local(in this case, i want to start 3)
+kubectl get nodes -- list nodes
+kubectl port-forward service/$SERVICE_NAME $FROM_PORT:$TO_PORT
+minikube service $SERVICE_NAME
+minikube image load $REPOSITORY:$TAG
