@@ -5,3 +5,14 @@ kubectl get nodes -- list nodes
 kubectl port-forward service/$SERVICE_NAME $FROM_PORT:$TO_PORT
 minikube service $SERVICE_NAME
 minikube image load $REPOSITORY:$TAG
+
+kubectl create -f deploy.yaml
+kubectl apply -f deploy.yaml
+kubectl get deploy
+
+kubectl get deploy
+kubectl get pods
+kubectl get pods --selector=pod=timeserver-pod
+
+kubectl port-forward deploy/timeserver 8080:80
+kubectl logs -f deploy/timeserver(-f stands for follow) - streams the logs from one of the pods
