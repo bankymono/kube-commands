@@ -1,3 +1,22 @@
+minikube start --cpus 2 --memory 4g --driver docker --profile polar
+minikube stop --profile polar
+minikube start --profile polar
+
+minikube image load catalog-service --profile polar
+
+minikube addons enable ingress --profile polar
+ minikube ip --profile polar
+ minikube tunnel --profile polar
+kubectl get all -n ingress-nginx
+
+kubectl apply -f services
+kubectl delete -f k8s
+ kubectl delete -f services
+
+kubectl port-forward service/catalog-service 9001:80
+
+
+
 kubectl config get-contexts - used to list clusters
 kubectl config use-context $CONTEXT -- used to switch to a particular cluster
 minikube start --nodes 3 -- used to start nodes on local(in this case, i want to start 3)
@@ -17,3 +36,5 @@ kubectl get pods --selector=pod=timeserver-pod
 kubectl port-forward deploy/timeserver 8080:80
 kubectl logs -f deploy/timeserver(-f stands for follow) - streams the logs from one of the pods
 kubectl describe pod $POD_NAME
+
+kubectl logs -p $POD_NAME (p for prior instantiation of container,previous)
