@@ -16,3 +16,4 @@ kubectl get pods --selector=pod=timeserver-pod
 
 kubectl port-forward deploy/timeserver 8080:80
 kubectl logs -f deploy/timeserver(-f stands for follow) - streams the logs from one of the pods
+kubectl describe pod $POD_NAME
