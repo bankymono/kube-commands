@@ -9,6 +9,7 @@ minikube addons enable ingress --profile polar
  minikube tunnel --profile polar
 kubectl get all -n ingress-nginx
 
+kubectl create -f deploy.yaml
 kubectl apply -f services
 kubectl delete -f k8s
  kubectl delete -f services
@@ -34,7 +35,10 @@ kubectl get pods
 kubectl get pods --selector=pod=timeserver-pod
 
 kubectl port-forward deploy/timeserver 8080:80
+kubectl port-forward pod/$POD_NAME $FROM_PORT:$TO_PORT
+kubectl port-forward service/$SERVICE_NAME $FROM_PORT:$TO_PORT
 kubectl logs -f deploy/timeserver(-f stands for follow) - streams the logs from one of the pods
 kubectl describe pod $POD_NAME
 
 kubectl logs -p $POD_NAME (p for prior instantiation of container,previous)
+kubectl get service -w(w stands for watch)
