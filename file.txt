@@ -4,6 +4,8 @@ minikube start --profile polar
 
 minikube image load catalog-service --profile polar
 
+ minikube image load timeserver:latest --profile bankymono-cluster
+
 minikube addons enable ingress --profile polar
  minikube ip --profile polar
  minikube tunnel --profile polar
@@ -42,3 +44,12 @@ kubectl describe pod $POD_NAME
 
 kubectl logs -p $POD_NAME (p for prior instantiation of container,previous)
 kubectl get service -w(w stands for watch)
+
+kubectl exec -it deploy/timeserver -- sh
+
+kubectl get deploy $DEPLOYMENT_NAME
+
+kubectl get pods --selector=pod=timeserver-pod
+kubectl delete deploy timeserver
+kubectl delete service timeserver
+kubectl delete pod timeserver
