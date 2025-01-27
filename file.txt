@@ -53,3 +53,12 @@ kubectl get pods --selector=pod=timeserver-pod
 kubectl delete deploy timeserver
 kubectl delete service timeserver
 kubectl delete pod timeserver
+
+172.25.20.117
+
+
+kubectl describe pod $POD_NAME
+
+kubectl exec $POD_NAME -- env
+
+kubectl rollout restart deployment $DEPLOYMENT_NAME
