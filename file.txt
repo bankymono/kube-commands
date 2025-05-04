@@ -62,3 +62,17 @@ kubectl describe pod $POD_NAME
 kubectl exec $POD_NAME -- env
 
 kubectl rollout restart deployment $DEPLOYMENT_NAME
+
+
+accessing a deployed kube app on my system
+minikube ip - gets ip address of the vm u deployed minikube cluster
+if deployed on docker, u may not be able to access the ip from browser
+
+minikube service {service name} - loads the web page
+minikube service {service name}  --url - gives u a url that will work
+
+or you can port forward
+kubectl port-forward svc/web-service 8080:80
+
+or u can tunnel minikube
+minikube tunnel - this will give u an externalIP to call the service from
